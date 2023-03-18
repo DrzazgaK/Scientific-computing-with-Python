@@ -4,9 +4,10 @@ def print_word():
     print('+' + '---+' * len(letters))
     for n in range(0,len(letters)):
         if n < len(letters):
-            print('|' f' {litery[n]}', end= " ")
-        else:
-            print('|')
-            print('+' + '---+' * (len(letters)))
+            print('|' f' {letters[n]}', end= " ")
+    else:
+        print('|')
+        print('+' + '---+' * (len(letters)))
             
 print(print_word())
+
