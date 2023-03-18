@@ -1,0 +1,12 @@
+def print_word():
+    word=input("enter the word: ")
+    letters = [x for x in word]
+    print('+' + '---+' * len(letters))
+    for n in range(0,len(letters)):
+        if n < len(letters):
+            print('|' f' {litery[n]}', end= " ")
+        else:
+            print('|')
+            print('+' + '---+' * (len(letters)))
+            
+print(print_word())
