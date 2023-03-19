@@ -1,0 +1,12 @@
+n=2022
+import math
+x= format(math.pi, '.5f')
+word = 'Python'
+polish = 'Książka'
+outfile = open('vars.txt', 'w')
+L = ["{}\n".format(n), "{}\n".format(x), "{}\n".format(word), "{}\n".format(polish)]
+outfile.writelines(L)
+outfile.close()
+infile = open("vars.txt" , "r")
+S=infile.read()
+print(S)
