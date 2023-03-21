@@ -7,6 +7,17 @@ ord('a')
 
 #####################
 
+line1 = "+---+--------------------+------+----------+"
+line2 = "|No.|Name                |Symbol|Weight(u) |"
 pt = [(1,"Hydrogen","H",1), (2,"Helium","He",4), (3, "Lithium", "Li", 6), (4, "Beryllium", "Be", 9),
 (5, "Boron", "B", 11), (6, "Carbon", "C", 12), (7, "Nitrogen", "N", 14), (8, "Oxygen", "O", 16),
 (9, "Fluorine", "F", 19), (10, "Neon", "Ne", 20)]
+L=[line1,line2,line1]
+for t in pt:
+    L.append("|{}|{}|{}|{}|".format(
+        str(t[0]).rjust(3),
+        t[1].ljust(20),
+        t[2].center(6),
+        str(t[3]).rjust(10)))
+L.append(line1)
+print("\n".join(L))
