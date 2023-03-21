@@ -1,1 +1,13 @@
 S=str('Neurodegenerative diseases, injuries and especially autoimmune diseases are often associated with the immune system response. This response can exert significant effects on the course of the disease and/or tissue regeneration. The topic of macrophage polarization is interesting because activity of M1 and M2 cells differently affect neuronal and oligodendrocyte survival, axon growth, demyelinat on and remyelination processes and the bloodbrain barrier permeability')
+L=S.split()
+print(len(L)) # ilość wyrazów
+
+print(len(set(L))) # ilość wyrazów bez powtórzeń 
+
+print(sum(1 for char in S if not char.isspace()))  # ilość czarnych znaków
+
+print(max(L, key=len))  # najdłuższy wyraz
+
+print(sorted(L))  #sortowanie leksykograficzne
+
+print(sorted(L, key=len))  # sortowanie ze względu na długość
