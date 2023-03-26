@@ -1,0 +1,25 @@
+#Let p=(x,y) be a point in a plane. Define the following functions using lambda:
+#(a) a test if p is in unit circle,
+
+p=(x,y)
+x=0.5, y=0.5
+if ((x*x + y*y) <= 1):
+    print ("p is in unit circle")
+else:
+    print ("p is not in unit circle")
+    
+# inne dane:
+
+def czy_p_nalezy():
+    p=input("wprowadz p:(x,y) ")
+    if ((x*x + y*y) <= 1):
+        print ("p jest w okregu")
+    else:
+        print ("p nie jest w okregu")
+
+czy_p_nalezy()
+wprowadz p:(x,y) p:(0,0) #p jest w okregu
+
+#(b) a test if the coordinates of p are positive,
+#(c) a sorting key (y decreasing, x increasing),
+#(d) a sorting key (the sum |x|+|y|).
