@@ -7,16 +7,16 @@
 def iter_even():
     i=0
     while True:
-        yield i+2
-        i+=2
+        yield i*2
+        i+=1
         
 iter_even()
 
 #b
 def iter_odd():
-    i=0
+    i=1
     while True:
-        yield i+1
+        yield i+2
         i+=1
 iter_odd()
 
