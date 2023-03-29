@@ -9,22 +9,38 @@ def iter_even():
     while True:
         yield i*2
         i+=1
-        
-iter_even()
+     
+even_numbers = iter_even()
+num1 = next(even_numbers)
+num2 = next(even_numbers)
+num3 = next(even_numbers)
+num4 = next(even_numbers)
+num5 = next(even_numbers)
+print("Selected even numbers are:", num1, num2, num3, num4, num5)
 
 #b
 def iter_odd():
     i=1
     while True:
-        yield i+2
-        i+=1
-iter_odd()
+        yield i
+        i=i+2
+
+        
+odd_numbers= iter_odd()
+num1 = next (odd_numbers)
+num2 = next (odd_numbers)
+num3 = next (odd_numbers)
+print("Selected odd numbers are:", num1, num2, num3)
 
 #c
 
 def iter_power(k):
-    i=0
+    i = 1
     while True:
-        yield k*k
-        i+=1
-iter_power(2)
+        yield k ** i
+        i += 1
+        
+powers_of_2 = iter_power(2)
+for i in range(5):
+    print(next(powers_of_2))
+    
