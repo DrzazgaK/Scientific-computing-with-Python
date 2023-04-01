@@ -1,0 +1,13 @@
+#
+
+import os
+path= '/Users/kamil/OneDrive/Pulpit/DRat' #1
+os.chdir('/Users/kamil/OneDrive/Pulpit/DRat') #2
+def find_pdf_size(top):
+    for root, dirs, files in os.walk(top):
+            print(root, "consumes", end=" ")
+            print(sum(os.path.getsize(os.path.join(root, name)) for name in files if name.lower().endswith(".pdf")), end=" ")
+            print("bytes in", len(files))
+            
+print(find_pdf_size(path)) #1
+find_pdf_size('.') #2
