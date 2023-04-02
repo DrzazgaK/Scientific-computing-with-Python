@@ -1,0 +1,20 @@
+#Create the function print_working_days(date1, date2), where 'date1' and 'date2' are strings 
+#of the form 'YYYY-MM-DD'. The function prints dates of working days (from Monday to Friday) 
+#in the given range, 'date2' is excluded:
+
+import datetime
+
+def print_working_days():
+    date1 = input('enter start date (YYYY-MM-DD): ')
+    date2 = input('enter end date (YYYY-MM-DD): ')
+    start= datetime.date.fromisoformat(date1)
+    end = datetime.date.fromisoformat(date2)
+    
+    delta = datetime.timedelta(days=1)
+    while start< end:
+        if start.weekday() < 5:
+            print(start.isoformat())
+            start += delta
+
+            
+print_working_days()
