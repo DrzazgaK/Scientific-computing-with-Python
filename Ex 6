@@ -32,3 +32,13 @@ class Vector:
         return hash((self.x, self.y, self.z))
 
 #test
+v = Vector(5,10,15)
+w = Vector(12,3,14)
+assert v != w
+assert v + w == Vector(17, 13, 29)
+assert v - w == Vector(-13,7,1)
+assert v * w == 300
+assert v.cross(w) == Vector(95,110,-105)
+assert v.length() == math.sqrt(350)
+S = set([v, v, w])
+assert len(S) == 2
