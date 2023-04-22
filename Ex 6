@@ -3,17 +3,13 @@ from math import sqrt
 
 class Vector:
     def __init__(self, x, y, z):
-        self.data = [0, 0, 0]
-        self.data[0] = x
-        self.data[1] = y
-        self.data[2] = z
         self.x = x
         self.y = y
         self.z = z
     def __repr__(self):
         return 'Vector ({}, {}, {})'.format(self.x, self.y, self.z)
     def is_zero(self):
-        return all(item == 0 for item in self.data)
+        return all(item == 0 for item in (self.x, self.y, self.z))
     def __eq__(self, other):
         return (self - other).is_zero()
     def __ne__(self, other):
