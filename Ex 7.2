@@ -1,0 +1,35 @@
+#Create the following infinite iterators:
+  (a) returning 0, 1, 0, 1, 0, 1, ...,
+  (b) returning randomly 0 or 1 on demand,
+  (c) returning 0, 1, 0, -1, 0, 1, 0, -1, ...
+#a  
+import itertools
+from itertools import cycle
+def zero_one_gen():
+    for num in cycle([0,1]):
+        yield num
+iterator = zero_one_gen()
+for i in range(10):
+    print(next(iterator))
+    
+#b
+import random
+def zero_one_random():
+    while True:
+        yield random.choice([0,1])
+        
+n1=next(zero_one_random())
+n2=next(zero_one_random())
+n3=next(zero_one_random())
+n4=next(zero_one_random()) 
+
+print("Random 0 or 1:", n1,n2,n3,n4)
+
+#c
+def iter_infinite():
+    for num in cycle([0,1,0,-1]):
+        yield num
+        
+infiter=iter_infinite()
+for i in range(10):
+    print(next(infiter))
