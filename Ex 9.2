@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+#n=100 random points in a unit square [0,1]x[0,1].??
+n = 100
+x = np.random.rand(n)
+y = np.random.rand(n)
+colors = np.where(np.sqrt(x**2+y**2)<1, 'g','r')
+marker_area = np.abs(x)+np.abs(y)
+plt.scatter(x,y, s=marker_area*100, c=colors)
+plt.show()
