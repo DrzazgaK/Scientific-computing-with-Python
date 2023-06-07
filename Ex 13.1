@@ -1,0 +1,17 @@
+#Read any raster image using the PIL library. Print some attributes (mode, size, format). 
+ Send me the script, the results, and the thumbnail with size=(128,128).
+ 
+#obrazek z:https://jellyfishwarehouse.com/products/marble-jellyfish-available-for-pre-order
+ 
+from PIL import Image
+
+with Image.open('jellyfish.png') as jelly:
+    print('Kolory = ',jelly.mode,'\n'
+          'Rozmiar = ', jelly.size,'\n',
+          'Format = ', jelly.format)
+    jelly.thumbnail((128, 128))
+    jelly.save('jelly_thumb.png', 'PNG')
+
+with Image.open('jelly_thumb.png') as jelly_thumb:
+    jelly_thumb.show()
+    
