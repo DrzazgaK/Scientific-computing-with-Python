@@ -1,0 +1,43 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+#nasz arkusz z danymi badanego genu
+gene_file_path = "C:\\Users\\kamil\\OneDrive\\Pulpit\\PCR\\20230713 bEnd.3 Pg 24h iNOS -  obliczenia.xlsx"
+df_gene = pd.read_excel(gene_file_path, sheet_name='0')
+
+#nasz arkusz z danymi genu referencyjnego
+ref_file_path = "C:\\Users\\kamil\\OneDrive\\Pulpit\\PCR\\20230713 bEnd.3 Pg 24h Gapdh do PAR2,iNOS, IL10,IL1b -  Quantification Cq Results.xlsx"
+df_ref = pd.read_excel(ref_file_path, sheet_name='0')
+
+#ustalamy próbki kontrolne
+control_samples = ['kontrola I', 'kontrola II', 'kontrola III']
+
+#liczymy dCT dla każdej z próbek
+df_merged = pd.merge(df_gene, df_ref, on='Sample')
+df_merged['dCT']= df_merged['Cq_gen']- df_merged['Cq']
+
+#liczymy srednią wartosć cCT dla próbek kontrolnych
+mean_dCT_control = df_merged[df_merged['Sample'].isin(control_samples)]['dCT'].mean()
+
+#liczymy wartosć ddCT
+df_merged['ddCT']= df_merged['dCT']- mean_dCT_control
+
+
+#liczymy wzgledną ekspresję badanego genu (fold change)
+
+df_merged['relative_expression'] = 2 ** -df_merged['ddCT']
+
+#liczymy srednią względną ekspresję dla każdej z próbek
+mean_relative_expression = df_merged.groupby('Sample')['relative_expression'].mean().reset_index()
+
+print("Mean Relative Expression (Fold Change):")
+print(mean_relative_expression)
+
+#wizualizacja wyników
+plt.bar(mean_relative_expression['Sample'], mean_relative_expression['relative_expression'])
+plt.xlabel("Sample")
+plt.ylabel("Fold Change")
+plt.title("Expression relative to GAPDH")
+plt.xticks(rotation=45, ha='right')
+plt.show()
