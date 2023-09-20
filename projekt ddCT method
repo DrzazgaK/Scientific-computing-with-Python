@@ -3,14 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #nasz arkusz z danymi badanego genu
-gene_file_path = "C:\\Users\\kamil\\OneDrive\\Pulpit\\PCR\\20230713 bEnd.3 Pg 24h iNOS -  obliczenia.xlsx"
+gene_file_path = input("Enter the path to the target gene excel file: " )
 df_gene = pd.read_excel(gene_file_path, sheet_name='0')
 
 #nasz arkusz z danymi genu referencyjnego
-ref_file_path = "C:\\Users\\kamil\\OneDrive\\Pulpit\\PCR\\20230713 bEnd.3 Pg 24h Gapdh do PAR2,iNOS, IL10,IL1b -  Quantification Cq Results.xlsx"
+ref_file_path = input("Enter the path to the reference gene excel file: ")
 df_ref = pd.read_excel(ref_file_path, sheet_name='0')
 
-#ustalamy próbki kontrolne
 control_samples = ['kontrola I', 'kontrola II', 'kontrola III']
 
 #liczymy dCT dla każdej z próbek
@@ -30,6 +29,9 @@ df_merged['relative_expression'] = 2 ** -df_merged['ddCT']
 
 #liczymy srednią względną ekspresję dla każdej z próbek
 mean_relative_expression = df_merged.groupby('Sample')['relative_expression'].mean().reset_index()
+
+sample_order = ['W83 1:20 I','W83 1:20 II','W83 1:20 III','W83 1:50 I','W83 1:50 II','W83 1:50 III','W83 1:100 I','W83 1:100 II','W83 1:100 III','KRAB 1:20 I','KRAB 1:20 II','KRAB 1:20 III','KRAB 1:50 I','KRAB 1:50 II','KRAB 1:50 III','KRAB 1:100 I','KRAB 1:100 II','KRAB 1:100 III','kontrola I','kontrola II','kontrola III','NTC']
+mean_relative_expression = mean_relative_expression.set_index('Sample').reindex(sample_order).reset_index()
 
 print("Mean Relative Expression (Fold Change):")
 print(mean_relative_expression)
